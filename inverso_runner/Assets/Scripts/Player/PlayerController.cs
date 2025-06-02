@@ -20,14 +20,16 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
 
-        if (col != null)
-        {
-            originalColliderSize = col.size;
-        }
+        if (rb == null)
+            Debug.LogError("Rigidbody2D no encontrado en el jugador.");
         else
-        {
+            rb.simulated = true;
+
+        if (col != null)
+            originalColliderSize = col.size;
+        else
             Debug.LogError("BoxCollider2D no encontrado en el jugador.");
-        }
+    
     }
 
     void Update()

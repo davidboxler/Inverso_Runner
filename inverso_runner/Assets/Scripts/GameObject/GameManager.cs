@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -33,7 +34,16 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
+        Debug.Log("Reiniciar activado");
+        Debug.Log("Reiniciar (versión LoadSceneAsync)");
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
+
+    //private IEnumerator RestartCoroutine()
+    //{
+    //    Time.timeScale = 1f;
+    //    yield return null; // permite aplicar el cambio de Time.timeScale
+    //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    //}
 }
